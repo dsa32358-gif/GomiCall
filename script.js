@@ -944,8 +944,8 @@ document.addEventListener(
 // ============================================================
 
 // シフトする時刻
-const SHIFT_HOUR = 13;   // 時
-const SHIFT_MINUTE = 7; // 分
+const SHIFT_HOUR = 10;   // 時
+const SHIFT_MINUTE = 22; // 分
 
 
 // ============================================================
