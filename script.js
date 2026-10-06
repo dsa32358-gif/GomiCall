@@ -923,7 +923,7 @@ document.addEventListener(
 
         setInterval(
             checkDailyShift,
-            60 * 1000
+            30 * 1000
         );
 
         // ページ読み込み時にも確認
