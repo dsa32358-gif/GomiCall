@@ -1,6 +1,4 @@
-// シフト間隔
-// 現在は動作確認用として6秒
-
+// シフト時の通知音
 const music = new Audio('sounds/sound01.mp3');
 
 
