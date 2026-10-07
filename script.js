@@ -1072,3 +1072,176 @@ function speakShiftData() {
 
     }, 300);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ============================================================
+// 通知時刻設定
+// ============================================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const hourSelect =
+        document.getElementById("notification-hour");
+
+    const minuteSelect =
+        document.getElementById("notification-minute");
+
+    const saveButton =
+        document.getElementById("save-notification-time");
+
+    const status =
+        document.getElementById("notification-status");
+
+
+    if (
+        !hourSelect ||
+        !minuteSelect ||
+        !saveButton ||
+        !status
+    ) {
+        return;
+    }
+
+
+    // --------------------------------------------------------
+    // 時間を作成
+    // --------------------------------------------------------
+
+    for (let hour = 0; hour < 24; hour++) {
+
+        const option =
+            document.createElement("option");
+
+        option.value = hour;
+
+        option.textContent =
+            String(hour).padStart(2, "0");
+
+        hourSelect.appendChild(option);
+    }
+
+
+    // --------------------------------------------------------
+    // 分を作成
+    // --------------------------------------------------------
+
+    for (let minute = 0; minute < 60; minute++) {
+
+        const option =
+            document.createElement("option");
+
+        option.value = minute;
+
+        option.textContent =
+            String(minute).padStart(2, "0");
+
+        minuteSelect.appendChild(option);
+    }
+
+
+    // --------------------------------------------------------
+    // 保存されている設定を取得
+    // --------------------------------------------------------
+
+    const savedHour =
+        localStorage.getItem("notificationHour");
+
+    const savedMinute =
+        localStorage.getItem("notificationMinute");
+
+
+    if (savedHour !== null) {
+
+        SHIFT_HOUR =
+            Number(savedHour);
+
+    }
+
+
+    if (savedMinute !== null) {
+
+        SHIFT_MINUTE =
+            Number(savedMinute);
+
+    }
+
+
+    // --------------------------------------------------------
+    // セレクトボックスへ現在の設定を表示
+    // --------------------------------------------------------
+
+    hourSelect.value =
+        SHIFT_HOUR;
+
+    minuteSelect.value =
+        SHIFT_MINUTE;
+
+
+    updateNotificationStatus();
+
+
+    // --------------------------------------------------------
+    // 設定ボタン
+    // --------------------------------------------------------
+
+    saveButton.addEventListener("click", () => {
+
+        SHIFT_HOUR =
+            Number(hourSelect.value);
+
+        SHIFT_MINUTE =
+            Number(minuteSelect.value);
+
+
+        // 保存
+
+        localStorage.setItem(
+            "notificationHour",
+            SHIFT_HOUR
+        );
+
+        localStorage.setItem(
+            "notificationMinute",
+            SHIFT_MINUTE
+        );
+
+
+        updateNotificationStatus();
+
+    });
+
+
+    // --------------------------------------------------------
+    // 現在の設定を表示
+    // --------------------------------------------------------
+
+    function updateNotificationStatus() {
+
+        const hour =
+            String(SHIFT_HOUR)
+                .padStart(2, "0");
+
+        const minute =
+            String(SHIFT_MINUTE)
+                .padStart(2, "0");
+
+
+        status.textContent =
+            `現在の通知時刻：${hour}:${minute}`;
+
+    }
+
+});
