@@ -18,6 +18,45 @@
 		</div>
 	<!-- ヘッダー ここまで -->
 
+
+<!-- 通知設定 -->
+<section class="notification-settings">
+
+    <div class="notification-title">
+        通知設定
+    </div>
+
+    <div class="notification-row">
+
+        <label for="notification-hour">
+            通知時刻
+        </label>
+
+        <select id="notification-hour">
+            <!-- JavaScriptで0～23時を生成 -->
+        </select>
+
+        <span>時</span>
+
+        <select id="notification-minute">
+            <!-- JavaScriptで0～59分を生成 -->
+        </select>
+
+        <span>分</span>
+
+    </div>
+
+    <button id="save-notification-time">
+        通知時刻を設定
+    </button>
+
+    <div id="notification-status"></div>
+
+</section>
+<!-- 通知設定 ここまで -->
+
+	
+
 	<!-- メイン -->
 	<main>
 
