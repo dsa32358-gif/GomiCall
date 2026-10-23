@@ -799,3 +799,311 @@ body {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   レイアウト変更：ヘッダー / 説明文 / 本体 / 説明文 / フッター
+============================================================ */
+
+/* ヘッダー（サイト名・ロゴ） */
+
+.site-header {
+    width: calc(100% - 40px);
+    max-width: 1900px;
+
+    margin: 0 auto;
+    padding: clamp(20px, 3vw, 40px) 0 10px;
+
+    text-align: center;
+
+    color: #2f2a24;
+}
+
+.site-title {
+    margin: 0;
+
+    font-size: clamp(36px, 6vw, 96px);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+}
+
+.site-subtitle {
+    margin: 10px 0 0;
+
+    font-size: clamp(14px, 2vw, 28px);
+    line-height: 1.4;
+}
+
+
+/* 説明文（上・下 共通） */
+
+.site-description {
+    width: calc(100% - 40px);
+    max-width: 1900px;
+
+    margin: 0 auto;
+    padding: clamp(15px, 2.5vw, 35px) 0;
+
+    text-align: center;
+
+    color: #2f2a24;
+
+    font-size: clamp(14px, 1.6vw, 24px);
+    line-height: 1.8;
+}
+
+.site-description p {
+    margin: 0;
+}
+
+
+/* メイン */
+
+main {
+    width: 100%;
+}
+
+
+/* フッター（クレジット表記など） */
+
+.site-footer {
+    width: calc(100% - 40px);
+    max-width: 1900px;
+
+    margin: 0 auto;
+    padding: clamp(15px, 2vw, 30px) 0 clamp(20px, 3vw, 40px);
+
+    border-top: 1px solid rgba(47, 42, 36, 0.25);
+
+    text-align: center;
+
+    color: #2f2a24;
+
+    font-size: clamp(12px, 1.3vw, 18px);
+    line-height: 1.6;
+}
+
+
+/* スマートフォン */
+
+@media (max-width: 500px) {
+
+    .site-header,
+    .site-description,
+    .site-footer {
+        width: calc(100% - 16px);
+    }
+
+    .site-header {
+        padding-top: 20px;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   カレンダー枠（今日のごみ＋7日分を囲む別枠）※奥行きあり
+============================================================ */
+
+/* 外側：厚みのある台座 */
+
+.calendar-frame {
+    position: relative;
+
+    width: calc(100% - 40px);
+    max-width: 1900px;
+
+    margin: 10px auto 15px;
+
+    padding: clamp(10px, 1.5vw, 22px);
+
+    background: #d1c8bc;
+
+    border: none;
+    border-radius: clamp(12px, 1.8vw, 28px);
+
+    box-shadow: none;
+}
+
+
+/* 内側：くぼみ（中に沈んで見える部分） */
+
+.calendar-well {
+    padding: clamp(8px, 1.2vw, 18px);
+
+    background: #c2b8a8;
+
+    border-radius: clamp(8px, 1.2vw, 20px);
+
+    box-shadow: none;
+}
+
+
+/* 枠の中では、中身の横幅を枠いっぱいにする */
+
+.calendar-frame .box-8,
+.calendar-frame .table-container {
+    width: 100%;
+    max-width: none;
+}
+
+.calendar-frame .box-8 {
+    margin-top: 0;
+}
+
+.calendar-frame .table-container {
+    margin: 10px 0 0;
+}
+
+
+/* ============================================================
+   フルスクリーンボタン（枠の左下）
+============================================================ */
+
+.calendar-frame-footer {
+    display: flex;
+    justify-content: flex-start;
+
+    margin-top: clamp(10px, 1.2vw, 16px);
+}
+
+#fullscreen-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 18px;
+
+    font-family: inherit;
+    font-size: clamp(14px, 1.5vw, 20px);
+    font-weight: 600;
+
+    color: #ffffff;
+    background: #334155;
+
+    border: none;
+    border-radius: 10px;
+
+    box-shadow: none;
+
+    cursor: pointer;
+}
+
+#fullscreen-button:hover {
+    opacity: 0.9;
+}
+
+#fullscreen-button:active {
+    opacity: 0.8;
+}
+
+
+/* ============================================================
+   フルスクリーン表示中
+============================================================ */
+
+.calendar-frame.is-fullscreen {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    z-index: 9999;
+
+    width: 100%;
+    max-width: none;
+    height: 100%;
+
+    margin: 0;
+
+    overflow: auto;
+
+    border: none;
+    border-radius: 0;
+
+    box-shadow: none;
+}
+
+/* 全画面中は外側の枠・くぼみを見せない（中身だけ表示） */
+
+.calendar-frame.is-fullscreen {
+    padding: 10px;
+
+    background: #aaa092;
+}
+
+.calendar-frame.is-fullscreen .calendar-well {
+    padding: 0;
+
+    background: transparent;
+
+    border-radius: 0;
+}
+
+/* ボタンに隠れないよう、下に余白 */
+
+.calendar-frame.is-fullscreen .calendar-well {
+    padding-bottom: 70px;
+}
+
+
+/* 下までスクロールしなくてもボタンが押せるように固定 */
+
+.calendar-frame.is-fullscreen .calendar-frame-footer {
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+
+    z-index: 10000;
+
+    margin: 0;
+}
+
+
+/* ============================================================
+   スマホ
+============================================================ */
+
+@media (max-width: 500px) {
+
+    .calendar-frame {
+        width: calc(100% - 16px);
+
+        padding: 8px;
+
+        margin-bottom: 15px;
+    }
+
+    .calendar-well {
+        padding: 6px;
+    }
+
+    .calendar-frame .table-container {
+        width: 100%;
+    }
+
+    .calendar-frame .box-8 {
+        margin-top: 0;
+    }
+
+}
