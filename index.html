@@ -1,5 +1,5 @@
-﻿<!Doctype html>
-<html>
+<!Doctype html>
+<html lang="ja">
 <head>
 <title>GomiCall | 飯田市鼎 切石・名古熊のごみ収集日カレンダー</title>
 <meta charset="UTF-8">
@@ -11,14 +11,25 @@
 
 <div class="wrapper">
 
-	<!-- ヘッダー -->
+	<!-- ヘッダー（サイト名・ロゴ） -->
+	<header class="site-header">
+		<h1 class="site-title">GomiCall</h1>
+		<p class="site-subtitle">飯田市鼎 切石・名古熊のごみ収集日カレンダー</p>
+	</header>
+	<!-- ヘッダー ここまで -->
+
+
+	<!-- カレンダー枠 -->
+	<div class="calendar-frame" id="calendar-frame">
+
+	<div class="calendar-well">
+
+	<!-- 今日のごみ -->
 		<div class="box box-8">
 		<div class="boxtext2">今日は</div>
 		<div class="boxdata"></div>
 		</div>
-	<!-- ヘッダー ここまで -->
-
-	
+	<!-- 今日のごみ ここまで -->
 
 	<!-- メイン -->
 	<main>
@@ -71,48 +82,74 @@
 
 		<div id="data-display"></div>
 
+
 	</main>
 	<!-- メイン ここまで -->
-<footer>
 
-<!-- 通知設定 -->
-<section class="notification-settings">
+	</div>
+	<!-- calendar-well ここまで -->
 
-    <div class="notification-title">
-        通知設定
-    </div>
+	<!-- フルスクリーンボタン（枠の左下） -->
+	<div class="calendar-frame-footer">
+		<button id="fullscreen-button" type="button" aria-pressed="false">
+			<svg class="fs-icon" viewBox="0 0 24 24" width="1.1em" height="1.1em" aria-hidden="true">
+				<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"
+					fill="none" stroke="currentColor" stroke-width="2.2"
+					stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+			<span id="fullscreen-label">全画面表示</span>
+		</button>
+	</div>
+	<!-- フルスクリーンボタン ここまで -->
 
-    <div class="notification-row">
+	</div>
+	<!-- カレンダー枠 ここまで -->
 
-        <label for="notification-hour">
-            通知時刻
-        </label>
+	<!-- 通知設定 -->
+	<section class="notification-settings">
 
-        <select id="notification-hour">
-            <!-- JavaScriptで0～23時を生成 -->
-        </select>
+		<div class="notification-title">
+			通知設定
+		</div>
 
-        <span>時</span>
+		<div class="notification-row">
 
-        <select id="notification-minute">
-            <!-- JavaScriptで0～59分を生成 -->
-        </select>
+			<label for="notification-hour">
+				通知時刻
+			</label>
 
-        <span>分</span>
+			<select id="notification-hour">
+				<!-- JavaScriptで0～23時を生成 -->
+			</select>
 
-    </div>
+			<span>時</span>
 
-    <button id="save-notification-time">
-        通知時刻を設定
-    </button>
+			<select id="notification-minute">
+				<!-- JavaScriptで0～59分を生成 -->
+			</select>
 
-    <div id="notification-status"></div>
+			<span>分</span>
 
-</section>
-<!-- 通知設定 ここまで -->
-	
-</footer>
-	
+		</div>
+
+		<button id="save-notification-time">
+			通知時刻を設定
+		</button>
+
+		<div id="notification-status"></div>
+
+	</section>
+	<!-- 通知設定 ここまで -->
+
+
+	<!-- フッター（クレジット表記など） -->
+	<footer class="site-footer">
+		<p>2026 GomiCall<br>
+		   ○ ごみアイコン引用元<br>　icon-rainbow<br>　ICOOON MONO
+		</p>
+	</footer>
+	<!-- フッター ここまで -->
+
 	<script src="script.js"></script>
 
 </div>
