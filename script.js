@@ -942,8 +942,8 @@ document.addEventListener(
 // ============================================================
 
 // シフトする時刻
-let SHIFT_HOUR = 14;
-let SHIFT_MINUTE = 26;
+let SHIFT_HOUR = 0;
+let SHIFT_MINUTE = 0;
 
 
 // ============================================================
@@ -982,9 +982,9 @@ function checkDailyShift() {
 
 
     // 今日すでにシフト済みなら何もしない
-    //if (lastShiftDate === todayKey) {
-       // return;
-  //  }
+     if(lastShiftDate === todayKey) {
+       return;
+   	}
 
 
     // 1日分シフト
